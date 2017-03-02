@@ -3,12 +3,13 @@
 #define ARRAY_LIST
 
 #include <stdexcept>
-#include "listADT.hpp"
+#include "../listADT.hpp"
 
 #define DEFSIZE 1024
 
 template<typename T>
 class ArrayList : public ListADT<T>{
+protected:
 	T* list;
 	long index;
 	long size;
@@ -18,13 +19,14 @@ public:
 	ArrayList(long n);
 	~ArrayList();
 	T value();
-	void insert(T val);
+	virtual void insert(T val);
 	void remove();
 	long getSize();
 	bool isempty();
 	bool isfull();
-	bool find(T val);
-private:
+	virtual bool find(T val);
+	std::string toString();
+protected:
 	void increase();
 };
 

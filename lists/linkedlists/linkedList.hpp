@@ -14,6 +14,7 @@ struct Node{
 
 template<typename T>
 class LinkedList : public ListADT<T>{
+protected:
 	Node<T>* list;
 	long size;
 	long location;
@@ -21,7 +22,7 @@ public:
 	LinkedList();
 	~LinkedList();
 	T value();
-	void insert(T val);
+	virtual void insert(T val);
 	void remove();
 	void clear();
 	bool find(T val);

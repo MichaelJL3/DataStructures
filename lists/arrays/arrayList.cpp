@@ -42,6 +42,9 @@ void ArrayList<T>::insert(T val){
 
 template<typename T>
 void ArrayList<T>::remove(){
+	if(isempty())
+		throw std::runtime_error("List Underflow Exception");
+		
 	index--;
 }
 
@@ -62,10 +65,11 @@ bool ArrayList<T>::isempty(){
 
 template<typename T>
 bool ArrayList<T>::find(T val){
-	for(location=0; location<=index; location++){
+    for(int location=0; location<index; location++){
 		if(list[location]==val)
 			return true;
 	}
+
 	location=-1;
 	return false;
 }
@@ -80,6 +84,16 @@ void ArrayList<T>::increase(){
 	}
 
 	list=temp;
+}
+
+template<typename T>
+std::string ArrayList<T>::toString(){
+	std::string listStr="";
+
+	for(int i=0; i<=index; i++)
+		listStr+=std::to_string(list[i])+"\n";
+
+	return listStr;
 }
 
 #endif
